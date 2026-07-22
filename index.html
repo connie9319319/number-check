@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="數字易經門號健檢：快速查看手機門號能量分數與八大能量。" />
+  <title>數字易經門號健檢</title>
+  <style>
+    :root {
+      --navy: #17324d;
+      --navy-2: #244b6b;
+      --gold: #c8a15a;
+      --cream: #f8f5ef;
+      --white: #ffffff;
+      --text: #27313a;
+      --muted: #6c7780;
+      --good: #2f8f68;
+      --bad: #c55454;
+      --line: #e8e1d7;
+      --shadow: 0 16px 40px rgba(23, 50, 77, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(200, 161, 90, 0.18), transparent 34%),
+        linear-gradient(145deg, #f7f1e8 0%, #eef4f7 100%);
+      padding: 24px 16px 48px;
+    }
+
+    .page {
+      width: min(760px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid rgba(200, 161, 90, 0.55);
+      border-radius: 999px;
+      color: var(--navy);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      background: rgba(255,255,255,.7);
+    }
+
+    h1 {
+      margin: 14px 0 8px;
+      color: var(--navy);
+      font-size: clamp(30px, 6vw, 44px);
+      line-height: 1.18;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.95);
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .input-label {
+      display: block;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 15px 16px;
+      border: 1.5px solid #cfd9df;
+      border-radius: 14px;
+      font-size: 20px;
+      letter-spacing: .08em;
+      color: var(--navy);
+      outline: none;
+      transition: .2s ease;
+    }
+
+    input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(200, 161, 90, .15);
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 0 22px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-2));
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(23, 50, 77, .22);
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    .hint, .error {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .hint { color: var(--muted); }
+    .error { color: var(--bad); font-weight: 700; min-height: 20px; }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .score-card {
+      text-align: center;
+      padding: 28px 20px;
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(23, 50, 77, .98), rgba(36, 75, 107, .96));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      right: -70px;
+      top: -80px;
+      background: rgba(200, 161, 90, .18);
+    }
+
+    .score-title {
+      font-size: 15px;
+      opacity: .88;
+      letter-spacing: .06em;
+    }
+
+    .score-number {
+      margin: 8px 0 4px;
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .score-number span {
+      font-size: 18px;
+      margin-left: 4px;
+      font-weight: 600;
+      opacity: .85;
+    }
+
+    .stars {
+      color: #f3c86c;
+      letter-spacing: 5px;
+      font-size: 23px;
+      min-height: 30px;
+    }
+
+    .level {
+      margin-top: 8px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin: 26px 0 12px;
+      color: var(--navy);
+      font-size: 20px;
+    }
+
+    .energy-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .energy-row {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .pair {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 18px;
+      letter-spacing: .08em;
+    }
+
+    .energy-name { font-weight: 800; }
+
+    .badge {
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge.good {
+      color: var(--good);
+      background: rgba(47, 143, 104, .12);
+    }
+
+    .badge.bad {
+      color: var(--bad);
+      background: rgba(197, 84, 84, .12);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .summary-box {
+      border-radius: 16px;
+      padding: 16px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .summary-box strong {
+      display: block;
+      font-size: 28px;
+      color: var(--navy);
+      margin-top: 4px;
+    }
+
+
+    .teacher-note {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(200,161,90,.13), rgba(255,255,255,.95));
+      border: 1px solid rgba(200,161,90,.34);
+    }
+
+    .teacher-note h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .teacher-note p {
+      margin: 0;
+      line-height: 1.8;
+      font-weight: 700;
+      color: #4b4b45;
+    }
+
+    .note {
+      margin-top: 22px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #fffaf0;
+      border-left: 4px solid var(--gold);
+      color: #665c4f;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .cta {
+      display: inline-block;
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 800;
+      color: white;
+      background: linear-gradient(135deg, #2f8f68, #287657);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 560px) {
+      .card { padding: 18px; border-radius: 20px; }
+      .input-row { grid-template-columns: 1fr; }
+      button { min-height: 50px; }
+      .energy-row { grid-template-columns: 54px 1fr; }
+      .badge { grid-column: 2; justify-self: start; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">手機門號能量快速檢測</div>
+      <h1>數字易經門號健檢</h1>
+      <p class="subtitle">
+        輸入台灣手機號碼，立即查看數字易經門號能量分數，<br />
+        看看它是你的神隊友，還是需要留意的豬隊友。
+      </p>
+    </header>
+
+    <section class="card">
+      <label class="input-label" for="phoneInput">請輸入手機號碼</label>
+      <div class="input-row">
+        <input
+          id="phoneInput"
+          type="tel"
+          inputmode="numeric"
+          maxlength="14"
+          placeholder="例如：0938019423"
+          autocomplete="tel"
+        />
+        <button id="checkButton" type="button">立即健檢</button>
+      </div>
+      <div class="hint">僅接受台灣 09 開頭的 10 碼手機號碼。</div>
+      <div id="errorMessage" class="error" aria-live="polite"></div>
+
+      <section id="result" class="result" aria-live="polite">
+        <div class="score-card">
+          <div class="score-title">數字易經門號能量分數</div>
+          <div class="score-number"><span id="scoreValue">0</span><span>分</span></div>
+          <div id="stars" class="stars"></div>
+          <div id="level" class="level"></div>
+        </div>
+
+        <h2 class="section-title">數字磁場</h2>
+        <div id="energyList" class="energy-list"></div>
+
+        <h2 class="section-title">能量概況</h2>
+        <div class="summary-grid">
+          <div class="summary-box">
+            四吉數
+            <strong id="goodCount">0</strong>
+          </div>
+          <div class="summary-box">
+            四凶數
+            <strong id="badCount">0</strong>
+          </div>
+        </div>
+
+
+        <div class="teacher-note">
+          <h3>紫晴老師提醒</h3>
+          <p id="teacherComment"></p>
+        </div>
+
+        <div class="note">
+          本次健檢僅針對手機門號本身的數字能量進行初步分析。
+          正式批算仍需結合個人其他數字元素，實際影響可能因個案條件與數字組合而產生變化。
+          想更精準了解門號對您的影響，歡迎預約一對一個案諮詢。
+        </div>
+
+        <!-- 把 href 改成你的 LINE 預約連結 -->
+        <a class="cta" href="#" onclick="return false;">查看完整個人數字易經分析</a>
+      </section>
+    </section>
+
+    <div class="footer">數字易經門號健檢｜初步能量參考</div>
+  </main>
+
+  <script>
+    const ENERGY_MAP = {
+      "13":"天醫","31":"天醫","68":"天醫","86":"天醫",
+      "49":"天醫","94":"天醫","72":"天醫","27":"天醫",
+
+      "14":"生氣","41":"生氣","67":"生氣","76":"生氣",
+      "93":"生氣","39":"生氣","82":"生氣","28":"生氣",
+
+      "19":"延年","91":"延年","87":"延年","78":"延年",
+      "34":"延年","43":"延年","26":"延年","62":"延年",
+
+      "11":"伏位","22":"伏位","33":"伏位","44":"伏位",
+      "66":"伏位","77":"伏位","88":"伏位","99":"伏位",
+
+      "12":"絕命","21":"絕命","69":"絕命","96":"絕命",
+      "48":"絕命","84":"絕命","73":"絕命","37":"絕命",
+
+      "17":"禍害","71":"禍害","89":"禍害","98":"禍害",
+      "46":"禍害","64":"禍害","23":"禍害","32":"禍害",
+
+      "16":"六煞","61":"六煞","47":"六煞","74":"六煞",
+      "38":"六煞","83":"六煞","92":"六煞","29":"六煞",
+
+      "18":"五鬼","81":"五鬼","79":"五鬼","97":"五鬼",
+      "42":"五鬼","24":"五鬼","36":"五鬼","63":"五鬼"
+    };
+
+    const CATEGORY = {
+      "天醫":"四吉數",
+      "生氣":"四吉數",
+      "延年":"四吉數",
+      "伏位":"四吉數",
+      "六煞":"四凶數",
+      "絕命":"四凶數",
+      "禍害":"四凶數",
+      "五鬼":"四凶數"
+    };
+
+    const RAW_SCORE = {
+      "天醫": 500,
+      "生氣": 500,
+      "延年": 500,
+      "伏位": 500,
+      "六煞": -500,
+      "絕命": -500,
+      "禍害": -500,
+      "五鬼": -1500
+    };
+
+    function preprocessPhone(phone) {
+      // 1. 去除非數字
+      let digits = phone.replace(/\D/g, "");
+
+      // 2. 驗證台灣手機號碼
+      if (!/^09\d{8}$/.test(digits)) {
+        throw new Error("請輸入正確的台灣手機號碼，例如 0938019423。");
+      }
+
+      // 3. 第一個共同數 0 不參考
+      let number = digits.slice(1);
+
+      // 4. 5 在前後視為 0；中間的 5 刪除
+      const chars = [...number];
+      const processed = chars
+        .map((char, index) => {
+          if (char !== "5") return char;
+          const isFirst = index === 0;
+          const isLast = index === chars.length - 1;
+          return (isFirst || isLast) ? "0" : "";
+        })
+        .join("");
+
+      if (processed.length < 2) {
+        throw new Error("處理後的有效數字不足，無法進行健檢。");
+      }
+
+      return { original: digits, processed };
+    }
+
+    function getOriginalEnergy(pair) {
+      // 只要組合含 0，原始能量即為伏位
+      if (pair.includes("0")) return "伏位";
+      return ENERGY_MAP[pair] || null;
+    }
+
+    function analyzePhone(phone) {
+      const { original, processed } = preprocessPhone(phone);
+      const results = [];
+      let previousFinalEnergy = "";
+
+      for (let i = 0; i < processed.length - 1; i++) {
+        const pair = processed[i] + processed[i + 1];
+        const originalEnergy = getOriginalEnergy(pair);
+
+        if (!originalEnergy) {
+          throw new Error(`數字組合 ${pair} 尚未設定對應能量。`);
+        }
+
+        let finalEnergy = originalEnergy;
+
+        // 伏位為變色龍：若前面已有最終能量，就直接承接
+        if (originalEnergy === "伏位" && previousFinalEnergy) {
+          finalEnergy = previousFinalEnergy;
+        }
+
+        results.push({
+          pair,
+          energy: finalEnergy,
+          category: CATEGORY[finalEnergy],
+          rawScore: RAW_SCORE[finalEnergy]
+        });
+
+        previousFinalEnergy = finalEnergy;
+      }
+
+      const rawTotal = results.reduce((sum, item) => sum + item.rawScore, 0);
+
+      /*
+        100 分制：
+        以 50 分為中線。
+        每一組 +500 或 -500，依總組數等比例換算；
+        五鬼 -1500，因此影響是一般凶數的 3 倍。
+      */
+      const score = Math.max(
+        0,
+        Math.min(
+          100,
+          Math.round(50 + (rawTotal / (results.length * 1000)) * 100)
+        )
+      );
+
+      const goodCount = results.filter(item => item.category === "四吉數").length;
+      const badCount = results.length - goodCount;
+
+      return { original, processed, results, rawTotal, score, goodCount, badCount };
+    }
+
+
+    const COMMENT_BANK = {
+      "天醫": [
+        "財運能量加分，努力較容易累積成果。",
+        "財運磁場有助力，適合穩健累積。",
+        "財富機會較佳，記得同步做好規劃。",
+        "財運表現有加分，善用機會更有感。",
+        "容易遇到財富機會，行動更能放大成果。",
+        "財運能量不錯，適合建立長期累積。",
+        "金錢能量有助力，穩健經營更理想。",
+        "財運較有支撐，持續行動容易見成果。",
+        "具備財富加分能量，理財紀律很重要。",
+        "財運磁場偏正向，可把握適合的機會。"
+      ],
+      "生氣": [
+        "貴人運加分，容易遇到願意幫忙的人。",
+        "人際助力較佳，常有貴人提供資源。",
+        "容易遇見貴人，合作機會也較順。",
+        "貴人磁場不錯，適合主動建立連結。",
+        "人際互動有助力，容易獲得支持。",
+        "貴人運較旺，善用人脈更有成果。",
+        "容易得到協助，適合保持開放互動。",
+        "人際資源有加分，合作較容易推進。",
+        "貴人能量佳，關鍵時刻較有人相助。",
+        "容易遇到好夥伴，溝通合作更順利。"
+      ],
+      "延年": [
+        "事業運加分，執行力與責任感較強。",
+        "工作能量有助力，適合穩定推進目標。",
+        "事業磁場較佳，持續行動容易有成果。",
+        "執行力加分，工作發展較有支撐。",
+        "事業運偏正向，適合建立長期方向。",
+        "工作能量穩健，責任感容易被看見。",
+        "事業推進有助力，專注目標更有成果。",
+        "職場能量加分，適合累積專業實力。",
+        "工作表現較有支撐，行動力是優勢。",
+        "事業發展有加分，穩定投入更理想。"
+      ],
+      "五鬼": [
+        "財進財出較明顯，建議做好收支規劃。",
+        "容易有漏財感，記得先管理支出節奏。",
+        "金錢流動較快，預算規劃特別重要。",
+        "財富容易進出，宜建立固定儲蓄習慣。",
+        "留意花費速度，避免賺得快也花得快。",
+        "財務起伏較明顯，做好分配更安心。",
+        "容易出現額外支出，建議預留備用金。",
+        "財進財出能量強，理財紀律不可少。",
+        "金錢不易停留，適合先設定儲蓄目標。",
+        "財務流動偏快，避免衝動消費與投資。"
+      ],
+      "禍害": [
+        "雜事偏多，留意小人與溝通細節。",
+        "容易被瑣事干擾，做事要排好優先順序。",
+        "雜務較多，留意口舌與人際誤會。",
+        "小事容易累積，建議提早整理與溝通。",
+        "留意小人干擾，重要事情最好留紀錄。",
+        "雜事較多，避免把時間耗在無效爭執。",
+        "人際細節需留意，溝通時多確認一次。",
+        "容易遇到瑣碎問題，保持界線更省力。",
+        "口舌雜事偏多，說話宜清楚保留彈性。",
+        "留意人際誤會，重要決定避免只靠口頭。"
+      ],
+      "絕命": [
+        "奔波感較強，避免瞎忙與高風險決策。",
+        "財運起伏較大，投資與決策宜更審慎。",
+        "行動力強但易瞎忙，先確認方向再出發。",
+        "容易忙碌奔波，記得聚焦真正有價值的事。",
+        "財務波動較明顯，避免衝動投入。",
+        "做事容易衝太快，先規劃可降低耗損。",
+        "奔波能量偏高，慎選目標比努力更重要。",
+        "財運可能大起大落，穩健配置較適合。",
+        "行動前多評估，避免忙很多卻成果有限。",
+        "容易投入過度，重要決策務必保留退路。"
+      ],
+      "六煞": [
+        "熱心助人也要設界線，避免濫好人內耗。",
+        "待人重感情，但別讓過度付出消耗自己。",
+        "容易替別人操心，記得先照顧自己的能量。",
+        "人情壓力較高，適時拒絕也是保護自己。",
+        "重視關係是優點，但別把責任全扛在身上。",
+        "避免因濫好人而內耗，界線清楚更輕鬆。",
+        "容易為他人付出，記得保留自己的空間。",
+        "人際互動多，別因討好而忽略真實需求。",
+        "感情用事時要停一下，避免過度消耗。",
+        "善良要有原則，適時說不才能走得長久。"
+      ]
+    };
+
+    function pick(arr, seed) {
+      return arr[Math.abs(seed) % arr.length];
+    }
+
+    function createTeacherComment(results, phone) {
+      const present = new Set(results.map(item => item.energy));
+      const negativePriority = ["五鬼", "絕命", "禍害", "六煞"];
+      const positivePriority = ["天醫", "生氣", "延年"];
+      const seed = Number(phone.slice(-6)) || results.length;
+
+      const selected = [];
+      for (const energy of negativePriority) {
+        if (present.has(energy)) {
+          selected.push(pick(COMMENT_BANK[energy], seed + energy.length));
+          break;
+        }
+      }
+      for (const energy of positivePriority) {
+        if (present.has(energy)) {
+          selected.push(pick(COMMENT_BANK[energy], seed + energy.charCodeAt(0)));
+          break;
+        }
+      }
+
+      if (selected.length === 0) {
+        return "門號能量較平穩，仍建議結合個人數字做完整判讀。";
+      }
+
+      let text = selected.join("；");
+      if (!/[。！？]$/.test(text)) text += "。";
+      return text;
+    }
+
+    function getLevel(score, results) {
+      const badCount = results.filter(
+        item => item.category === "四凶數"
+      ).length;
+
+      const hasFiveGhosts = results.some(
+        item => item.energy === "五鬼"
+      );
+
+      // 只要出現五鬼，最低就是「需留意」；
+      // 若分數低於 40，則為「豬隊友」。
+      if (hasFiveGhosts) {
+        if (score < 40) return { stars: 1, text: "豬隊友" };
+        return { stars: 2, text: "需留意" };
+      }
+
+      // 四凶數達兩組以上，最高只能判定為「需留意」。
+      if (badCount >= 2) {
+        if (score < 40) return { stars: 1, text: "豬隊友" };
+        return { stars: 2, text: "需留意" };
+      }
+
+      // 其餘門號依能量分數判斷。
+      if (score >= 90) return { stars: 5, text: "神隊友" };
+      if (score >= 75) return { stars: 4, text: "好隊友" };
+      if (score >= 40) return { stars: 2, text: "需留意" };
+      return { stars: 1, text: "豬隊友" };
+    }
+
+    function renderResult(data) {
+      const energyList = document.getElementById("energyList");
+      energyList.innerHTML = "";
+
+      data.results.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "energy-row";
+
+        const pair = document.createElement("div");
+        pair.className = "pair";
+        pair.textContent = item.pair;
+
+        const name = document.createElement("div");
+        name.className = "energy-name";
+        name.textContent = item.energy;
+
+        const badge = document.createElement("div");
+        const isGood = item.category === "四吉數";
+        badge.className = `badge ${isGood ? "good" : "bad"}`;
+        badge.textContent = item.category;
+
+        row.append(pair, name, badge);
+        energyList.appendChild(row);
+      });
+
+      const level = getLevel(data.score, data.results);
+      document.getElementById("scoreValue").textContent = data.score;
+      document.getElementById("stars").textContent =
+        "★".repeat(level.stars) + "☆".repeat(5 - level.stars);
+      document.getElementById("level").textContent = level.text;
+      document.getElementById("goodCount").textContent = `${data.goodCount} 組`;
+      document.getElementById("badCount").textContent = `${data.badCount} 組`;
+      document.getElementById("teacherComment").textContent = createTeacherComment(data.results, data.original);
+      document.getElementById("result").style.display = "block";
+
+      document.getElementById("result").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    function runCheck() {
+      const input = document.getElementById("phoneInput");
+      const error = document.getElementById("errorMessage");
+      const result = document.getElementById("result");
+
+      error.textContent = "";
+      result.style.display = "none";
+
+      try {
+        const data = analyzePhone(input.value);
+        renderResult(data);
+      } catch (err) {
+        error.textContent = err.message;
+      }
+    }
+
+    document.getElementById("checkButton").addEventListener("click", runCheck);
+    document.getElementById("phoneInput").addEventListener("keydown", event => {
+      if (event.key === "Enter") runCheck();
+    });
+  </script>
+</body>
+</html>
