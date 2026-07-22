@@ -1,1 +1,1205 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <meta
+    name="description"
+    content="紫晴老師數字易經服務項目與收費，包含完整個案諮詢、易經門號、車牌選號、銀行帳號、品牌數字能量配置及線上課程。"
+  />
+
+  <title>服務項目及收費｜紫晴老師數字易經</title>
+
+  <style>
+    :root {
+      --purple-dark: #51456f;
+      --purple: #74658f;
+      --purple-light: #eee9f4;
+      --purple-soft: #f7f4fa;
+
+      --gold: #b79b6c;
+      --gold-light: #e6d9c3;
+
+      --cream: #fbf9f5;
+      --white: #ffffff;
+      --text: #342f38;
+      --muted: #756f79;
+      --line: #e7dfd4;
+
+      --green: #2d8b67;
+      --green-dark: #237052;
+
+      --shadow: 0 14px 36px rgba(61, 48, 81, 0.1);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(183, 155, 108, 0.08), transparent 26%),
+        radial-gradient(circle at 92% 20%, rgba(116, 101, 143, 0.08), transparent 30%),
+        var(--cream);
+
+      font-family:
+        "Noto Serif TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        serif;
+
+      line-height: 1.8;
+      padding-bottom: 88px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* 頂部導覽列 */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(231, 223, 212, 0.9);
+      background: rgba(251, 249, 245, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.35;
+    }
+
+    .brand strong {
+      color: var(--purple-dark);
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-link {
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--purple-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* 首屏 */
+
+    .hero {
+      padding: 82px 0 54px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px;
+      color: var(--purple);
+      border: 1px solid var(--gold-light);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .hero h1 {
+      margin: 24px auto 14px;
+      color: var(--purple-dark);
+      font-size: clamp(38px, 7vw, 66px);
+      line-height: 1.2;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(17px, 2.8vw, 21px);
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.3;
+      cursor: pointer;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      box-shadow: 0 10px 24px rgba(81, 69, 111, 0.22);
+    }
+
+    .btn-secondary {
+      color: var(--purple-dark);
+      border: 1px solid var(--gold-light);
+      background: var(--white);
+    }
+
+    /* 快速導覽 */
+
+    .quick-nav {
+      margin: 0 auto 48px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-nav-title {
+      margin: 0 0 12px;
+      color: var(--purple-dark);
+      text-align: center;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .quick-nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .quick-nav-links a {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--purple-soft);
+      color: var(--purple-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* 區塊標題 */
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 26px;
+      text-align: center;
+    }
+
+    .section-heading span {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+    }
+
+    .section-heading h2 {
+      margin: 7px 0 8px;
+      color: var(--purple-dark);
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.35;
+      letter-spacing: 0.06em;
+    }
+
+    .section-heading p {
+      max-width: 670px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    /* 服務卡片 */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card.featured {
+      grid-column: 1 / -1;
+      border-color: #d9cde7;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(247, 244, 250, 0.98),
+          rgba(255, 255, 255, 0.98)
+        );
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      bottom: -50px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(116, 101, 143, 0.05);
+      pointer-events: none;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--purple-light);
+      color: var(--purple-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .service-title {
+      margin: 16px 0 3px;
+      color: var(--purple-dark);
+      font-size: clamp(24px, 4vw, 31px);
+      line-height: 1.4;
+    }
+
+    .price {
+      margin: 3px 0 16px;
+      color: var(--purple-dark);
+      font-size: 31px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .service-intro {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      position: relative;
+      margin: 9px 0;
+      padding-left: 27px;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--purple);
+      font-weight: 900;
+    }
+
+    .card-note {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      background: #faf7f1;
+      color: #625a62;
+      font-size: 14px;
+    }
+
+    .card-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* 門號方案 */
+
+    .plan-box {
+      margin-top: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--cream);
+    }
+
+    .plan-box + .plan-box {
+      margin-top: 14px;
+    }
+
+    .plan-box.special {
+      border-color: #d7c8e4;
+      background: var(--purple-soft);
+    }
+
+    .plan-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .plan-header h4 {
+      margin: 0;
+      color: var(--purple-dark);
+      font-size: 20px;
+    }
+
+    .plan-price {
+      white-space: nowrap;
+      color: var(--purple-dark);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .plan-box p {
+      margin: 9px 0 0;
+      color: var(--muted);
+    }
+
+    /* 步驟 */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .step {
+      padding: 22px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      text-align: center;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--purple-light);
+      color: var(--purple-dark);
+      font-weight: 900;
+    }
+
+    .step h3 {
+      margin: 12px 0 5px;
+      color: var(--purple-dark);
+      font-size: 18px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      display: grid;
+      gap: 13px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    details {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: 0 7px 18px rgba(61, 48, 81, 0.05);
+    }
+
+    summary {
+      position: relative;
+      padding: 18px 54px 18px 20px;
+      color: var(--purple-dark);
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      position: absolute;
+      right: 20px;
+      top: 17px;
+      color: var(--purple);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "－";
+    }
+
+    .faq-answer {
+      padding: 0 20px 20px;
+      color: var(--muted);
+    }
+
+    /* CTA */
+
+    .final-cta {
+      margin: 42px 0 20px;
+      padding: 42px 28px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(81, 69, 111, 0.97),
+          rgba(116, 101, 143, 0.94)
+        );
+      color: var(--white);
+      text-align: center;
+      box-shadow: 0 18px 44px rgba(81, 69, 111, 0.25);
+    }
+
+    .final-cta h2 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 5vw, 42px);
+      letter-spacing: 0.05em;
+    }
+
+    .final-cta p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .final-cta-actions {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .final-cta .btn-primary {
+      color: var(--purple-dark);
+      background: var(--white);
+      box-shadow: none;
+    }
+
+    .final-cta .btn-secondary {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: transparent;
+    }
+
+    /* 頁尾 */
+
+    footer {
+      padding: 28px 0 38px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .disclaimer {
+      max-width: 830px;
+      margin: 0 auto 16px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.65);
+      text-align: left;
+    }
+
+    /* 手機底部預約列 */
+
+    .mobile-booking-bar {
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding:
+        10px
+        max(14px, env(safe-area-inset-right))
+        calc(10px + env(safe-area-inset-bottom))
+        max(14px, env(safe-area-inset-left));
+      border-top: 1px solid rgba(231, 223, 212, 0.94);
+      background: rgba(251, 249, 245, 0.96);
+      backdrop-filter: blur(14px);
+    }
+
+    .mobile-booking-inner {
+      width: min(600px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.82fr 1.4fr;
+      gap: 9px;
+    }
+
+    .mobile-booking-inner .btn {
+      min-height: 48px;
+      padding: 10px 13px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card.featured {
+        grid-column: auto;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 22px, 1080px);
+      }
+
+      .topbar-inner {
+        min-height: 62px;
+      }
+
+      .brand strong {
+        font-size: 16px;
+      }
+
+      .brand span {
+        font-size: 11px;
+      }
+
+      .top-link {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 56px 0 36px;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+        letter-spacing: 0.06em;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .quick-nav {
+        padding: 14px 12px;
+      }
+
+      .service-card {
+        padding: 22px 18px;
+      }
+
+      .plan-header {
+        display: block;
+      }
+
+      .plan-price {
+        display: block;
+        margin-top: 5px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .final-cta {
+        padding: 34px 19px;
+      }
+
+      .final-cta-actions {
+        display: grid;
+      }
+
+      .final-cta-actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 頂部導覽列 -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="返回免費門號健檢首頁">
+        <strong>紫晴老師｜數字易經</strong>
+        <span>服務項目及收費</span>
+      </a>
+
+      <div class="top-actions">
+        <a class="top-link" href="index.html">免費健檢</a>
+
+        <a
+          class="top-link"
+          href="https://calendar.app.google/hPGcSsmbCBEHWNF86"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          立即預約
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 首屏 -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">專屬數字能量方案</div>
+
+        <h1>服務項目及收費</h1>
+
+        <p class="hero-subtitle">
+          每個人的生命階段與需求都不同。<br />
+          從了解自己開始，找到真正適合你的數字能量配置。
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="btn btn-primary"
+            href="https://calendar.app.google/hPGcSsmbCBEHWNF86"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            預約完整個案諮詢
+          </a>
+
+          <a class="btn btn-secondary" href="index.html">
+            先做免費門號健檢
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 快速導覽 -->
+    <div class="container">
+      <nav class="quick-nav" aria-label="服務項目快速導覽">
+        <p class="quick-nav-title">快速查看服務</p>
+
+        <div class="quick-nav-links">
+          <a href="#consultation">個案諮詢</a>
+          <a href="#phone">易經門號</a>
+          <a href="#car">車牌選號</a>
+          <a href="#bank">銀行帳號</a>
+          <a href="#brand-energy">品牌配置</a>
+          <a href="#course">線上課程</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 服務項目 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span>PROFESSIONAL SERVICES</span>
+          <h2>找到適合你的服務</h2>
+          <p>
+            第一次接觸數字易經，建議先從完整個案諮詢開始，
+            再依分析結果決定後續的數字配置方案。
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- 完整個案諮詢 -->
+          <article class="service-card featured" id="consultation">
+            <div class="card-badge">⭐ 建議第一次先從這裡開始</div>
+
+            <h3 class="service-title">完整數字能量個案諮詢</h3>
+
+            <div class="price">
+              NT$1,500
+              <small>／60分鐘</small>
+            </div>
+
+            <p class="service-intro">
+              透過本命、流年與手機號碼能量分析，
+              協助你看見目前的人生課題，找到適合自己的改善方向。
+            </p>
+
+            <ul class="feature-list">
+              <li>本命數字能量解析</li>
+              <li>流年運勢與階段分析</li>
+              <li>手機號碼能量檢視</li>
+              <li>財運、事業、感情與人際方向</li>
+              <li>提供後續調整與行動建議</li>
+            </ul>
+
+            <div class="card-note">
+              完整個案諮詢採 Zoom 線上一對一進行。
+              請於安靜、網路穩定的空間參與，建議使用耳機與麥克風。
+            </div>
+
+            <div class="card-actions">
+              <a
+                class="btn btn-primary"
+                href="https://calendar.app.google/hPGcSsmbCBEHWNF86"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                查看可預約時段
+              </a>
+            </div>
+          </article>
+
+          <!-- 易經門號 -->
+          <article class="service-card featured" id="phone">
+            <div class="card-badge">📱 專屬數字配置</div>
+
+            <h3 class="service-title">客製化易經門號</h3>
+
+            <p class="service-intro">
+              依個人命盤、流年與實際需求，
+              規劃並媒合適合的易經門號數字組合。
+            </p>
+
+            <div class="plan-box">
+              <div class="plan-header">
+                <h4>一般易經門號</h4>
+                <span class="plan-price">NT$9,000／組</span>
+              </div>
+
+              <p>
+                依個人本命、流年及需求，
+                客製規劃適合的數字能量門號。
+              </p>
+            </div>
+
+            <div class="plan-box special">
+              <div class="plan-header">
+                <h4>特殊能量配置方案</h4>
+                <span class="plan-price">NT$22,000／組</span>
+              </div>
+
+              <p>
+                若完整分析後確認命格或流年具有特殊能量需求，
+                可能需採用「生天延」特殊組合進行配置。
+              </p>
+
+              <p>
+                費用包含一般門號選號 NT$9,000，
+                加上特殊配置 NT$13,000。
+              </p>
+            </div>
+
+            <ul class="feature-list" style="margin-top: 20px">
+              <li>依本命與流年規劃數字方向</li>
+              <li>結合財富、事業、家庭、感情或健康需求</li>
+              <li>媒合符合條件的易經門號</li>
+              <li>提供門號配置與使用建議</li>
+            </ul>
+
+            <div class="card-note">
+              是否需要採用特殊方案，將由紫晴老師完成分析後，
+              與個案充分討論；最終方案由個案本人決定。
+            </div>
+
+            <div class="card-note">
+              一般易經門號的媒合時間至少約一個月；
+              特殊能量配置門號約需三個月。
+              實際時間依電信公司可釋出的號碼而定。
+              若最後未成功媒合符合條件的門號，將全額退費。
+            </div>
+          </article>
+
+          <!-- 車牌 -->
+          <article class="service-card" id="car">
+            <div class="card-badge">🚗 車牌能量規劃</div>
+
+            <h3 class="service-title">車牌選號</h3>
+
+            <div class="price">
+              NT$7,000
+              <small>／組</small>
+            </div>
+
+            <p class="service-intro">
+              依個人命盤、職業特性及使用需求，
+              規劃適合的易經車牌數字組合。
+            </p>
+
+            <ul class="feature-list">
+              <li>個人本命能量分析</li>
+              <li>結合職業特性與車輛用途</li>
+              <li>規劃專屬車牌數字組合</li>
+              <li>提供配置與選號建議</li>
+            </ul>
+
+            <div class="card-note">
+              車牌號碼依監理站實際可選號碼進行規劃。
+              本服務提供專業分析及選號建議，
+              實際申辦仍須依監理機關規定辦理。
+            </div>
+          </article>
+
+          <!-- 銀行帳號 -->
+          <article class="service-card" id="bank">
+            <div class="card-badge">🏦 財富數字配置</div>
+
+            <h3 class="service-title">銀行帳號數字客製</h3>
+
+            <div class="price">
+              NT$8,000
+              <small>／組</small>
+            </div>
+
+            <p class="service-intro">
+              依個人需求與財運方向，
+              規劃適合的銀行帳號數字排列。
+            </p>
+
+            <ul class="feature-list">
+              <li>個人財運能量分析</li>
+              <li>帳號數字排列方向建議</li>
+              <li>專屬數字能量配置</li>
+              <li>提供帳號使用與開運建議</li>
+            </ul>
+
+            <div class="card-note">
+              適用於可自行選擇帳號的銀行。
+              實際開戶方式及帳號規則，依各銀行規定為準。
+            </div>
+          </article>
+
+          <!-- 品牌能量 -->
+          <article class="service-card" id="brand-energy">
+            <div class="card-badge">💻 品牌入口配置</div>
+
+            <h3 class="service-title">品牌數字能量配置</h3>
+
+            <div class="price">
+              NT$1,500
+              <small>／組</small>
+            </div>
+
+            <p class="service-intro">
+              依品牌定位與個人命盤，
+              提供適合的帳號或名稱數字能量配置建議。
+            </p>
+
+            <ul class="feature-list">
+              <li>LINE 官方帳號名稱</li>
+              <li>Email 名稱</li>
+              <li>英文姓名</li>
+              <li>品牌英文名稱</li>
+            </ul>
+
+            <div class="card-note">
+              每一組名稱或帳號為一項服務。
+              若有多組名稱或多個帳號需要規劃，
+              將依實際數量分別計費。
+              本服務不包含中文命名與商標註冊服務。
+            </div>
+          </article>
+
+          <!-- 課程 -->
+          <article class="service-card" id="course">
+            <div class="card-badge">🎓 深入學習</div>
+
+            <h3 class="service-title">數字易經線上課程</h3>
+
+            <div class="price">NT$19,000</div>
+
+            <p class="service-intro">
+              適合希望深入理解數字易經，
+              並學會自行分析與實際運用的人。
+            </p>
+
+            <ul class="feature-list">
+              <li>數字易經的基礎概念與架構</li>
+              <li>八大命格解析與圖像記憶</li>
+              <li>生日、手機號碼及流年分析</li>
+              <li>住家、地址、車牌及銀行帳號解析</li>
+              <li>中英文姓名、Email 與密碼能量</li>
+              <li>增加磁場的生活應用方法</li>
+              <li>Zoom 線上授課</li>
+              <li>終身免費複訓</li>
+              <li>學員專屬社群與不定期練習小聚</li>
+            </ul>
+
+            <div class="card-note">
+              課程開課時間及上課安排，
+              以最新公告或 LINE 官方帳號通知為準。
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 預約流程 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span>BOOKING PROCESS</span>
+          <h2>預約流程</h2>
+          <p>流程清楚，預約不迷路。畢竟我們是在調整數字，不是在玩密室逃脫。</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>選擇服務</h3>
+            <p>先了解各項服務內容，選擇符合目前需求的方案。</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>查看時段</h3>
+            <p>透過 Google 日曆預約頁，選擇可以配合的時間。</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>完成付款</h3>
+            <p>完成預約後，依訊息提供的方式完成匯款。</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">4</div>
+            <h3>確認成立</h3>
+            <p>回傳付款資訊，確認後正式保留諮詢時段。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span>FAQ</span>
+          <h2>常見問題</h2>
+          <p>預約前先把常見疑問說清楚，彼此都更安心。</p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>第一次接觸數字易經，建議選哪一項？</summary>
+            <div class="faq-answer">
+              建議先預約「完整數字能量個案諮詢」。
+              透過本命、流年與目前使用的手機號碼分析，
+              先了解自己的整體狀況，再決定是否需要選號或其他數字配置服務。
+            </div>
+          </details>
+
+          <details>
+            <summary>完整個案諮詢如何進行？</summary>
+            <div class="faq-answer">
+              採 Zoom 線上一對一進行，時間為 60 分鐘。
+              建議在安靜、網路穩定的環境參與，
+              並使用耳機與麥克風，以維持良好的諮詢品質。
+            </div>
+          </details>
+
+          <details>
+            <summary>預約後就代表時段正式保留了嗎？</summary>
+            <div class="faq-answer">
+              完成 Google 日曆預約後，仍需依訊息提供的方式完成付款。
+              收到付款資訊並確認後，預約才正式成立並保留時段。
+            </div>
+          </details>
+
+          <details>
+            <summary>易經門號一定找得到嗎？</summary>
+            <div class="faq-answer">
+              易經門號需依電信公司當下可釋出的號碼進行媒合，
+              符合個人條件的門號本身較為稀有。
+              若最後未成功媒合符合條件的門號，將依約全額退費。
+            </div>
+          </details>
+
+          <details>
+            <summary>特殊能量配置方案一定要使用嗎？</summary>
+            <div class="faq-answer">
+              不一定。是否需要特殊方案，
+              將由紫晴老師完成個案分析後提供專業建議，
+              並與個案討論差異、費用及需求，
+              最終選擇權仍由個案本人決定。
+            </div>
+          </details>
+
+          <details>
+            <summary>品牌數字能量配置的「一組」如何計算？</summary>
+            <div class="faq-answer">
+              一個名稱或帳號即為一組。
+              例如一個 LINE 官方帳號名稱、一個 Email 名稱，
+              或一個英文姓名，皆各自計算一組。
+            </div>
+          </details>
+
+          <details>
+            <summary>數字能量服務是否能保證特定結果？</summary>
+            <div class="faq-answer">
+              數字易經服務提供個人化分析、選號及配置建議，
+              協助個案了解自身狀況與可能的調整方向。
+              實際生活成果仍會受到個人選擇、行動及外在環境等多項因素影響，
+              因此不保證特定財務、感情、健康或事業結果。
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 最終 CTA -->
+    <section class="container">
+      <div class="final-cta">
+        <h2>準備開始了解自己的數字能量？</h2>
+
+        <p>
+          第一次接觸，建議先完成完整數字能量個案諮詢。
+          從理解自己開始，再選擇真正適合你的數字配置。
+        </p>
+
+        <div class="final-cta-actions">
+          <a
+            class="btn btn-primary"
+            href="https://calendar.app.google/hPGcSsmbCBEHWNF86"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            立即查看 Google 預約時段
+          </a>
+
+          <a class="btn btn-secondary" href="index.html">
+            返回免費門號健檢
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer>
+    <div class="container">
+      <div class="disclaimer">
+        <strong>服務說明：</strong>
+        本網站內容為數字易經服務介紹與初步參考，
+        不構成醫療、法律、投資或其他專業決策建議。
+        實際服務方案將依個案需求及分析結果討論確認。
+      </div>
+
+      <div>
+        數字易經門號健檢｜紫晴老師
+        <br />
+        LINE 官方帳號：@connie9319319
+      </div>
+    </div>
+  </footer>
+
+  <!-- 手機底部固定按鈕 -->
+  <div class="mobile-booking-bar">
+    <div class="mobile-booking-inner">
+      <a class="btn btn-secondary" href="index.html">
+        免費健檢
+      </a>
+
+      <a
+        class="btn btn-primary"
+        href="https://calendar.app.google/hPGcSsmbCBEHWNF86"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google 日曆立即預約
+      </a>
+    </div>
+  </div>
+</body>
+</html>
